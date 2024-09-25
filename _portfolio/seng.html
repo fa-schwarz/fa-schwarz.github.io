@@ -1,0 +1,113 @@
+---
+title: "SENG: Application-grained Firewall Policies using TEE-based Traffic-to-App Attribution"
+excerpt: "<img src='/images/papers/seng/setting.jpg' width='500'><br/><br/>Gateway firewalls isolate internal and external networks by mediating all network traffic and enforcing filter rules.
+To distinguish between benign and malicious sender applications, firewalls rely on heuristics (e.g., port information) or client-side identifiers (e.g., the process ID).
+However, these traffic attribution methods are unreliable and can be easily bypassed by attackers.
+Therefore, we propose SENG, a gateway-located service that cooperates with client-side runtimes to enable secure traffic-to-app attribution.
+The SENG runtimes protect trusted applications and share hardware-based app identifiers with the SENG service to expose them to the firewall.
+That way, SENG enables gateway firewalls to securely attribute traffic to trusted applications and enforce app-grained firewall policies, even if the client systems have been compromised."
+collection: portfolio
+date: 2020-08-12
+---
+
+<head>
+    <style>
+        img {
+            border: 2px solid gray;
+            padding: 5px
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        li {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<p>
+    Gateway routers operate network firewalls at the perimeter of consumer and enterprise networks to centrally govern all network communication and perform packet filtering.
+    That way, gateway firewalls isolate internal from external networks, control access across internal subnetworks, and block communication to and from suspicious network addresses.
+</p>
+
+<img src='/images/papers/seng/setting.jpg' width='1000' >
+<br/><br/>
+
+<p>
+    Firewalls typically leverage port and IP information or data from client-side agents to identify sender or receiver applications.
+    That way, firewalls aim at permitting communication to and from known applications and services while denying unknown, potentially malicious network traffic (e.g., by malware).
+    For example, standard ports like 443 and 993 would be associated with encrypted HTTP web and IMAP mail communication respectively.
+</p>
+
+<img src='/images/papers/seng/bypass.jpg' width='1000' >
+<br/><br/>
+
+<p>
+    However, existing traffic-to-application attribution methods are too coarse-grained and unreliable to securely prevent malicious network communication.
+    Attackers can spoof port addresses, steal the identity of trusted applications by performing process injection, or compromise client-side firewall agents to manipulate application identifiers.
+    The underlying root causes are that existing attribution methods do not protect the client applications and their network traffic against local system-level attackers, and do not use secure, unforgeable application identifiers.
+    Therefore, trusted traffic-to-app attribution remains an open challenge of gateway firewalls, especially when considering strong client-side attackers.
+</p>
+
+
+<img src='/images/papers/seng/design.jpg' width='1000' >
+<br/><br/>
+
+<p>
+    To address this challenge, we introduce <b>SENG</b>, a gateway-located service coupled with client-side runtimes.
+    SENG protects client applications and their traffic against strong system-level attackers and exposes hardware-based identifiers of them to the gateway.
+    That way, the gateway can perform secure traffic-to-app attribution, even if the client hosts have been compromised.
+    With SENG, network admins can then securely enforce per-application firewall policies at the perimeter using existing firewalls.
+    <br/>
+    The client-side <i>SENG Runtimes</i> shield unmodified applications inside hardware-based trusted execution environments (TEEs), e.g., Intel SGX user space enclaves, using a library OS.
+    That way, the code and data of the apps are isolated from system-level attacks (e.g., process injection attempts).
+    In addition, the runtimes add secure TCP/IP stacks and DTLS modules into the application enclaves.
+    The modules securely manage the network connections of the applications inside the enclaves and tunnel their traffic to the gateway-located SENG Server---protecting their communication against client and network attackers.
+    <br/>
+    The <i>SENG Server</i> accepts the DTLS tunnel connections of the client-side runtimes and is responsible for performing the traffic-to-app attribution.
+    The server uses the remote attestation protocol supported by the client TEEs to identify the exact hash of a shielded application and assign its runtime instance a unique enclave IP address.
+    That way, the SENG Server can link the traffic to and from the DTLS tunnel connections exactly to the respective shielded client application.
+    To expose the application identity to the gateway firewall, the SENG Server picks the enclave IPs from application-specific IP subnetworks.
+    As a result, the gateway firewall can identify the type of a sender/receiver application based on the IP addresses, and therefore enforce app-specific firewall policies.
+</p>
+
+<center><img src='/images/papers/seng/rules-no-seng.jpg' width='500' ></center>
+<br/>
+<center><img src='/images/papers/seng/rules-seng.jpg' width='500' ></center>
+<br/>
+
+To adopt SENG's per-application policies, network admins must perform only two steps:
+<ol>
+    <li>Define per-application IP subnetworks and inform the SENG Server about the list of associated applications (attestation hashes).</li>
+
+    <li>Replace the host IP subnetworks in firewall rules with the respective application-specific subnetworks.</li>
+</ol>
+
+<p>
+    For example, app subnetworks could group the most recent versions of browsers that are free of known vulnerabilities, or they could be restricted to SQL clients with TLS support.
+    That way, existing firewalls can seamlessly enforce per-application rules on the app-specific subnetworks.
+    Furthermore, as the SENG Server can distinguish between unshielded and shielded (tunneled) network traffic and attribute it to the corresponding application, the gateway can easily block network traffic by unprotected or unknown, potentially malicious applications and services.
+</p>
+
+<p>
+    We have implemented and evaluated a prototype of SENG for Linux with Intel SGX enclaves and the Graphene-SGX (now: <a href="https://gramineproject.io/">Gramine</a>) library OS.
+    For more information on SENG, please check out the corresponding <a href="https://fa-schwarz.github.io/publication/seng">research paper</a> that has been published at the USENIX Security conference 2020.
+</p>
+
+<h3>Optional Extensions</h5>
+
+<p>
+    We have implemented an alternative client-side component which does not rely on a library OS, which is called SENG-SDK.
+    SENG-SDK loses the support for unmodified Linux applications provided by a TEE library OS, but achieves better performance for server applications, e.g., the NGINX web server.
+    <br/>
+    We have also implemented an optional extension to the Linux Netfilter and iptables firewall framework and the SENG Server, called SENG-Netfiler.
+    SENG-Netfiler enables the direct specification of app-grained firewall policies via new iptables rule specifiers, which are then enforced by a Netfilter extension module.
+    SENG-Netfilter provides better usability and does not require application-specific IP subnetworks---which decreases network fragmentation---but is tailored to the Netfilter/iptables firewall.
+    <br/>
+    Finally, we have also implemented an alternative prototype of the SENG Server.
+    While the original server prototype is implemented as a single-threaded C++ server, the SENG Go-Server is multi-threaded and implemented in the Go language.
+    <br/><br/>
+    All SENG prototypes, including the SENG-SDK, SENG-Netfilter, and SENG Go-Server, have been released as <a href="https://github.com/sengsgx">open-source projects on Github</a>.
+</p>

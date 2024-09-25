@@ -1,0 +1,59 @@
+---
+title: "00SEVen: Remote Inspection of TEE VMs using In-VM Agents"
+excerpt: "<img src='/images/papers/ooseven/setting.jpg' width='500'><br/><br/>While the strong hardware-based isolation of TEE VMs (TVMs) protects sensitive client data against a compromised cloud platform, it also renders existing VM introspection (VMI) capabilities unfeasible.
+Therefore, customers lose the capability to securely monitor their TVMs for in-VM attacks or perform a post-mortem analysis.
+Out-of-VM accesses are blocked while in-VM agents are not isolated from attackers that have compromised the TVM.
+00SEVen overcomes these challenges by enabling secure <i>remote</i> VMI for AMD-based TVMs using new hardware-protected in-VM agents."
+collection: portfolio
+date: 2024-08-14
+---
+
+<head>
+  <style>
+      img {
+          border: 2px solid gray;
+          padding: 5px
+      }
+
+      p {
+          text-align: justify;
+      }
+  </style>
+</head>
+
+<p>
+  Many hypervisors offer support for VM Introspection (VMI) capabilities to monitor VMs for a compromise and enable post-mortem analysis.
+  Typical VMI features include access to the memory and registers of a VM, on demand execution pausing, and memory access traps.
+</p>
+
+<center><img src='/images/papers/ooseven/setting.jpg' width="650" ></center>
+<br/>
+
+<p>
+  However, considering that cloud platforms can be prone to insider attackers or vulnerabilities in the host software (e.g., cloud OS or hypervisor), cloud-level attackers can abuse VMI to attack customer VMs and manipulate or steal their sensitive data.
+  Therefore, CPU vendors came up with TEE VMs (also: TVMs, confidential VMs), i.e., hardware-protected VMs forming trusted execution environments (TEEs).
+  TVMs are isolated from the software and peripherals of the cloud platform, including tenants VMs.
+  Technologies such as AMD SEV, Intel TDX, and Arm CCA implement TVMs and thus enable sensitive customers to protect their offloaded services and data against a compromised cloud platform.
+  However, the strong isolation of TEE VMs also renders <i>benign</i> attempts to monitor TVMs for in-VM attackers unfeasible.
+  Out-of-VM accesses are blocked while in-VM agents are not isolated from attackers that have compromised the TVM.
+</p>
+
+<img src='/images/papers/ooseven/design.jpg' width="1000" >
+<br/><br/>
+
+<p>
+  Therefore, we provide <b>00SEVen</b> which fills this gap by enabling secure <i>remote</i> VMI of TEE VMs using protected in-VM agents.
+  00SEVen uses hardware-based in-VM security domains to isolate the in-VM agents and their VMI operations from compromised TVM software, including the TVM OS.
+  The in-VM agent securely exposes VMI primitives to the remote TVM owner for monitoring the TVM for attacks---without leaking any information to in-VM or out-of-VM attackers (incl. cloud software).
+  00SEVen extends the hypervisor and re-designs existing VMI techniques to securely enable:
+  memory and register access, pausing of the TVM, trapping of memory accesses and kernel functions of the TVM OS,
+  and an attested remote channel to the TVM owner.
+  With 00SEVen, sensitive customer can benefit from both: the strong hardware-based protection of TEE VMs, <i>and</i> the flexible analysis capabilities of VMI.
+</p>
+
+<p>
+  We have implemented and evaluated a prototype of 00SEVen for AMD SEV-SNP TVMs and the QEMU/KVM hypervisor of Linux based on SEV-SNP's hardware-based VM Privilege Levels (VMPLs).
+  The remote analysis client is based on a custom backend for the <a href="https://libvmi.com/">LibVMI library</a>.
+  <br/><br/>
+  For more information on 00SEVen, please check out the corresponding <a href="https://fa-schwarz.github.io/publication/00seven">research paper</a> that has been published at the USENIX Security conference 2024.
+</p>

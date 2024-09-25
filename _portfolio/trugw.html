@@ -1,0 +1,67 @@
+---
+title: "TrustedGateway: TEE-protected Routing and Firewalling for Network Gateways"
+excerpt: "<img src='/images/papers/trugw/setting.jpg' width='500'><br/><br/>The routing and firewall services of gateways form the core of a network's functionality and security.
+However, their ever-increasing number of utility services and reliance on huge commodity OSes (e.g., Linux) has led to serious remote code execution vulnerabilities, enabling attackers to gain full control of gateways and their network policies.
+To restore trust in the security of consumer and enterprise networks, TrustedGateway protects the network traffic and core services of gateway routers against on-device attackers based on a trusted execution environment (TEE).
+That way, TrustedGateway guarantees the enforcement of trusted routing and firewall policies, even if the gateway OS has been compromised."
+collection: portfolio
+date: 2022-10-16
+---
+
+<head>
+    <style>
+        img {
+            border: 2px solid gray;
+            padding: 5px
+        }
+
+        p {
+              text-align: justify;
+        }
+    </style>
+</head>
+
+
+<p>
+    Gateway routers are at the core of a network's functionality and security.
+    They perform traffic routing, group devices into subnetworks, and enforce firewall policies.
+</p>
+
+<center><img src='/images/papers/trugw/setting.jpg' width='700' ></center>
+<br/>
+
+<p>
+    However, the central position of gateway routers makes them high-value targets for attacks.
+    In fact, there have been several serious remote code execution vulnerabilities in gateways over the last years,
+    resulting in a full compromise of the gateway and its security policies.
+    That way, attackers can launch several types of attacks, including traffic sniffing, data exfiltration (theft), as well as the infiltration of critical enterprise networks.
+</p>
+
+
+<center><img src='/images/papers/trugw/root-cause.jpg' width='700' ></center>
+<br/>
+
+<p>
+    The root cause of the high number of vulnerabilities is the increasing number of auxiliary services (e.g., VPN, web UI, IoT hub) on gateway routers and their reliance on huge commodity operation systems, e.g., Linux or BSD.
+    While auxiliary services increase a gateway router's system utility, they also expose a large attack surface and are not specifically hardened against attacks.
+    Furthermore, commodity OS consist of millions of lines of code with a high risk of undetected vulnerabilities.
+    Therefore, there is a high risk that attackers combine remote code execution exploits against auxiliary services with local privilege escalation attacks to gain full control of a gateway router, including its routing and firewall policies.
+</p>
+
+<center><img src='/images/papers/trugw/design.jpg' width='700' ></center>
+<br/>
+
+<p>
+    To preserve the security of consumer and enterprise networks, we propose <b>TrustedGateway (short: TruGW)</b>, a new gateway router architecture based on a system-level trusted execution environment (TEE).
+    TruGW uses Arm TrustZone to split the router into a trusted and untrusted domain.
+    TruGW provides secure routing and firewall services (NetTrug) within the trusted domain while containing the vulnerable auxiliary gateway services and OS in the untrusted one.
+    To guarantee traffic protection and policy enforcement, TruGW grants the trusted domain exclusive access to the physical network cards (NICs) and provides secure NIC drivers.
+    That way, all network traffic must pass through TruGW's trusted services.
+    In addition, TruGW exposes a virtual NIC (VNIC) to the untrusted domain that provides the untrusted auxiliary services and OS with restricted network access, enabling remote admins full control on what traffic reaches them and what communication is permitted by them.
+    In conclusion, TruGW significantly decreases the attack surface of gateway routers and guarantees secure policy enforcement, even if the gateway's OS or auxiliary services become compromised.
+</p>
+
+<p>
+    We have implemented and evaluated a prototype of TrustedGateway based on the <a href="https://www.trustedfirmware.org/projects/op-tee/">OP-TEE OS</a> (trusted OS) and Linux (untrusted OS) for a 2GB <a href="https://www.ezurio.com/single-board-computer/nxp-imx6/nitrogen6x-sbc">Nitrogen 6X board</a> with a i.MX6 FEC network card.
+    For more information on TrustedGateway, please check out the corresponding <a href="https://fa-schwarz.github.io/publication/trugw">research paper</a> that has been published at the RAID conference 2022.
+</p>

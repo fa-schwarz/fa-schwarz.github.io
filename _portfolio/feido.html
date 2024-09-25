@@ -1,0 +1,74 @@
+---
+title: "FeIDo: Recoverable FIDO2 Web Credentials using eIDs and TEEs"
+excerpt: "<img src='/images/papers/feido/idea.jpg' width='500'><br/><br/>The flaws of password-based web authentication are still putting users at risk.
+The FIDO2 protocol is the current standard for mitigating the shortcomings of passwords by providing a secure authenticator as a strong second factor for 2FA.
+However, while web service support for FIDO2 is increasing, user adoption is lacking due to the need for specific user hardware and the missing support for secure account recovery on a device loss.
+Therefore, FeIDo proposes attribute-based web credentials based on electronic IDs and a pseudonimizing, TEE-protected proxy service.
+FeIDo's credentials are compatible with FIDO2, can be adopted by users with no extra costs, and allow for easy account recovery."
+collection: portfolio
+date: 2022-11-07
+---
+
+<head>
+    <style>
+        img {
+            border: 2px solid gray;
+            padding: 5px
+        }
+
+        p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<p>
+    Password-based web authentication is vulnerable to several types of attacks, including phishing, shoulder surfing, brute-forcing, client malware, and database breaches.
+    Two-factor authentication mitigates the risk of a compromise by augmenting passwords with a second authentication factor, such that the theft of a password is no longer sufficient to hijack a user's account.
+    FIDO2 is a common standard for secure two-factor web authentication (2FA).
+    FIDO2 uses public-private key pairs as web credentials where the public keys are shared with the web services while the private keys are protected within virtual or physical user devices.
+    However, user adoption of FIDO2 is lacking due to the need for specific user hardware, and open challenges regarding the secure account recovery on a user device loss (or theft).
+</p>
+
+<center><img src='/images/papers/feido/idea.jpg' width='600' ></center>
+<br/>
+
+<p>
+    Electronic IDs, e.g., passports, would be an interesting candidate for a cost-efficient, recoverable second factor.
+    eIDs following the ICAO standard (for travel documents) contain personal information that is sufficiently unique to identify their owners, and provide mechanisms to securely read the data and verify their authenticity.
+    However, eIDs are not compatible with FIDO2 and introduce privacy issues by leaking personal information to third parties, e.g., web service providers.
+    Therefore, the idea of the <b>FeIDo</b> project has been to design a new virtual FIDO2 authenticator that combines the benefits of eIDs and trusted execution environments (TEEs) to solve the open cost and recovery challenges of FIDO2-based 2FA.
+</p>
+
+<center><img src='/images/papers/feido/design.jpg' width='600' ></center>
+<br/>
+
+<p>
+    <b>FeIDo</b> forms a virtual FIDO2 second factor that internally interacts with a user's eID and a TEE-protected credential service.
+    FeIDo extracts personal attributes from a user's eID and lets the credential service act as a pseudonimizing proxy which turns them into FIDO2 web credentials.
+    The resulting credentials are unlinkable to the user's personal information, and can be used for secure web authentication.
+    <br/>
+    The TEE-based credential service uses a keyed HMAC to derive the public-private key pair (credentials) based on the user attributes, and performs the required FIDO2 operations.
+    The authenticity of the credential service is remotely attested by FeIDo's user agent before sharing the eID attributes, and the service never leaks any private information to third parties, including the service host (e.g., cloud provider) and web service.
+    <br/>
+    FeIDo directly addresses the open cost and recovery challenges of existing FIDO2 authenticators.
+    Users can directly adopt FeIDo using their pre-owned eIDs (e.g., passports) with no extra costs.
+    If an eID gets lost, users can blocklist the stolen eID and use their newly-requested replacement eIDs to recover their web accounts.
+    As the replacement eIDs carry the same personal user attributes, they form the same credentials and allow users to directly access their web accounts without any extra steps.
+    In contrast, existing FIDO2 authenticators require insecure recovery mechanisms (e.g., recovery codes), or rely on a back-up authenticator that must be pre-registered in advance---further increasing the user's costs and setup complexity.
+</p>
+
+<center><img src='/images/papers/feido/anon-creds.jpg' width='600' ></center>
+<br/>
+
+<p>
+    FeIDo enables an additional feature not present in existing FIDO2 authenticators: anonymous credentials.
+    FeIDo's TEE-protected credential service can derive anonymous but verifiable meta-attributes that can augment the FIDO2 login data and be used for additional checks.
+    For example, FeIDo can enable secure but anonymous age verification by deriving a meta-attribute "of-full-age" that can be used by the web service to enforce additional access restrictions.
+</p>
+
+<p>
+    We have implemented and evaluated a prototype of FeIDo for Firefox based on a browser extension and Android app.
+    The current prototype uses a cloud-hosted Intel SGX user space enclave to protect the credential service and has been tested with German ePassports.
+    For more information on FeIDo, please check out the corresponding <a href="https://fa-schwarz.github.io/publication/feido">research paper</a> that has been published at the ACM CCS conference 2022, as well as <a href="https://fa-schwarz.github.io/publication/feido-extended">our extended technical report</a>.
+</p>
