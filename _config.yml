@@ -6,72 +6,48 @@
 # `jekyll serve -l -H localhost`. If you change this file, please restart the 
 # server process.
 
-# Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "Fabian Schwarz"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Fabian Frank Schwarz"
 description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://fa-schwarz.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "fa-schwarz/fa-schwarz.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
-  name             : "Your Sidebar Name"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  avatar           : "pictures/profile.jpg"
+  name             : "Fabian (Frank) Schwarz"
+  bio              : "Cybersecurity expert and researcher with focus on TEE-based system and network security architectures.
+  Graduated PhD (CISPA Helmholtz Center for Information Security)"
+  location         : "Germany"
+  employer         : "CISPA (until 31-08-2024)"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "fabian.fsblack@gmail.com"
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-  impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
-  semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  googlescholar    : "https://scholar.google.com/citations?user=zRglkcMAAAAJ"
+  orcid            : "https://orcid.org/0000-0002-8549-3881"
+  semantic         : "https://www.semanticscholar.org/author/Fabian-Schwarz/50651853" # URL
   researchgate     : # URL
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
-  codepen          : # Username
-  dribbble         : # Username
-  github           : "academicpages"
-  kaggle           : # Username  
+  github           : "fa-schwarz"
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
   facebook         : # Username
-  flickr           : # Username
-  foursquare       : # Username
-  goodreads        : # Username
-  google_plus      : # Username
-  keybase          : # Username
   instagram        : # Username
-  lastfm           : # Username
   linkedin         : # Username
   mastodon         : # URL
-  medium           : # URL
-  pinterest        : # Username
-  soundcloud       : # Username
-  steam            : # Username
-  telegram         : # URL
-  tumblr           : # Username
-  twitter          : # Username for X / Twitter
-  vine             : # Username
-  weibo            : # Username
-  wikipedia        : # Username
+  twitter          : "fa_schwarz" # Username for X / Twitter
   xing             : # Username
-  youtube          : # Username
-  zhihu            : # URL
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
@@ -81,6 +57,23 @@ publication_category:
     title: 'Journal Articles'    
   conferences:
     title: 'Conference Papers'
+  techreports:
+    title: 'Technical Reports'
+  unpublished:
+    title: 'Unpublished'
+  master:
+    title: 'Master Thesis'
+  bachelor:
+    title: 'Bachelor Thesis'
+
+# Supervision/Teching Category
+supervision_category:
+  supervision:
+    title: 'Supervised Projects'
+  teaching:
+    title: 'Teaching Experiences'
+  teachassist:
+    title: 'Teaching Assistance'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -209,7 +202,7 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  teaching:
+  supervision:
     output: true
     permalink: /:collection/:path/
   publications:
@@ -243,10 +236,10 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
+  # _supervision
   - scope:
       path: ""
-      type: teaching
+      type: supervision
     values:
       layout: single
       author_profile: true
@@ -283,14 +276,14 @@ defaults:
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
 # Outputting
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/Los_Angeles # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
@@ -339,7 +332,7 @@ tag_archive:
 
 
 # HTML Compression
-# - http://jch.penibelst.de/
+# - https://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:
