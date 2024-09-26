@@ -3,7 +3,7 @@ title: "FeIDo: Recoverable FIDO2 Web Credentials using eIDs and TEEs"
 excerpt: "<img src='/images/papers/feido/idea.jpg' width='500'><br/><br/>The flaws of password-based web authentication are still putting users at risk.
 The FIDO2 protocol is the current standard for mitigating the shortcomings of passwords by providing a secure authenticator as a strong second factor for 2FA.
 However, while web service support for FIDO2 is increasing, user adoption is lacking due to the need for specific user hardware and the missing support for secure account recovery on a device loss.
-Therefore, FeIDo proposes attribute-based web credentials based on electronic IDs and a pseudonimizing, TEE-protected proxy service.
+Therefore, FeIDo proposes attribute-based web credentials based on electronic IDs (e.g., ePassports) and a remotely attestable, pseudonimizing proxy service protected by a trusted execution environment (TEE).
 FeIDo's credentials are compatible with FIDO2, can be adopted by users with no extra costs, and allow for easy account recovery."
 collection: portfolio
 date: 2022-11-07
@@ -49,7 +49,8 @@ date: 2022-11-07
     The resulting credentials are unlinkable to the user's personal information, and can be used for secure web authentication.
     <br/>
     The TEE-based credential service uses a keyed HMAC to derive the public-private key pair (credentials) based on the user attributes, and performs the required FIDO2 operations.
-    The authenticity of the credential service is remotely attested by FeIDo's user agent before sharing the eID attributes, and the service never leaks any private information to third parties, including the service host (e.g., cloud provider) and web service.
+    The authenticity of the credential service is remotely attested by FeIDo's user agent during the TLS connection setup before sharing the eID attributes.
+    That way, the user agent can guarantee that the service is authentic and never leaks any private information to third parties, including the service host (e.g., cloud provider) and web service.
     <br/>
     FeIDo directly addresses the open cost and recovery challenges of existing FIDO2 authenticators.
     Users can directly adopt FeIDo using their pre-owned eIDs (e.g., passports) with no extra costs.
@@ -63,7 +64,7 @@ date: 2022-11-07
 
 <p>
     FeIDo enables an additional feature not present in existing FIDO2 authenticators: anonymous credentials.
-    FeIDo's TEE-protected credential service can derive anonymous but verifiable meta-attributes that can augment the FIDO2 login data and be used for additional checks.
+    FeIDo's TEE-protected credential service can derive anonymous but attestable meta-attributes that can augment the FIDO2 login data and be used for additional checks.
     For example, FeIDo can enable secure but anonymous age verification by deriving a meta-attribute "of-full-age" that can be used by the web service to enforce additional access restrictions.
 </p>
 

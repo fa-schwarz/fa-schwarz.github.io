@@ -3,7 +3,7 @@ title: "00SEVen: Remote Inspection of TEE VMs using In-VM Agents"
 excerpt: "<img src='/images/papers/ooseven/setting.jpg' width='500'><br/><br/>While the strong hardware-based isolation of TEE VMs (TVMs) protects sensitive client data against a compromised cloud platform, it also renders existing VM introspection (VMI) capabilities unfeasible.
 Therefore, customers lose the capability to securely monitor their TVMs for in-VM attacks or perform a post-mortem analysis.
 Out-of-VM accesses are blocked while in-VM agents are not isolated from attackers that have compromised the TVM.
-00SEVen overcomes these challenges by enabling secure <i>remote</i> VMI for AMD-based TVMs using new hardware-protected in-VM agents."
+00SEVen overcomes these challenges by enabling secure <i>remote</i> VMI for AMD-based TVMs using new hardware-protected, attestable in-VM agents."
 collection: portfolio
 date: 2024-08-14
 ---
@@ -45,6 +45,7 @@ date: 2024-08-14
   Therefore, we provide <b>00SEVen</b> which fills this gap by enabling secure <i>remote</i> VMI of TEE VMs using protected in-VM agents.
   00SEVen uses hardware-based in-VM security domains to isolate the in-VM agents and their VMI operations from compromised TVM software, including the TVM OS.
   The in-VM agent securely exposes VMI primitives to the remote TVM owner for monitoring the TVM for attacks---without leaking any information to in-VM or out-of-VM attackers (incl. cloud software).
+  The TVM owner can use remote attestation to verify the protection and authenticity of in-VM agents before starting a secure analysis session.
   00SEVen extends the hypervisor and re-designs existing VMI techniques to securely enable:
   memory and register access, pausing of the TVM, trapping of memory accesses and kernel functions of the TVM OS,
   and an attested remote channel to the TVM owner.

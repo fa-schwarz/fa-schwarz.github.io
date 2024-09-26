@@ -34,7 +34,7 @@ _note: PDF versions of my CV are in progress (in EN/GER)_
   * _CISPA Helmholtz Center for Information Security & Saarland University_
   * Supervisor: Prof. Dr. Christian Rossow
   * Responsibilities included:
-    * Research on new system and network security designs based on trusted execution environments for:  
+    * Research on attestable system and network security designs based on trusted execution environments for:  
     network gateways, firewalls, FIDO2 web authentication, and virtual machine introspection (forensics)
     * Design, implementation, and evaluation of research prototypes (proof of concepts)
     * Publication of research papers at international conferences, and presentation at conferences, workshops, and science outreach events (talks, posters)
@@ -68,7 +68,7 @@ _note: PDF versions of my CV are in progress (in EN/GER)_
 
 ## Experience / Skills
 
-During my PhD I have completed five research projects in the area of system, network, and web security, with a focus on designs based on trusted computing (or confidential computing) technologies.
+During my PhD I have completed five research projects in the area of system, network, and web security, with a focus on designs based on trusted computing (or confidential computing) technologies and their remote attestation protocols.
 I was responsible for identifying open research challenges, proposing research questions, designing conceptual solutions, as well as implementing and evaluating concrete technical architectures as prototypes.
 Furthermore, I was responsible for publishing the results in the form of research papers and open-source prototypes, and presenting them at renowned international security conferences in the form of technical talks.
 In four of the five projects I have been the main author and project lead.
@@ -77,7 +77,7 @@ The projects include intra- and inter-institutional cooperations, and sometimes 
 
 As part of my research, I have gained experience in several technical and non-technical areas, including but not limited to:
 
-* design and implementation of new CPU-assisted system and network security architectures, especially solutions based on trusted execution environments (TEEs) for attack isolation and containment, prevention, or detection
+* design and implementation of CPU-assisted system and network security architectures, in particular, new solutions based on trusted execution environments (TEEs) and remote attestation for attack isolation, prevention, or detection
 * threat analysis with focus on user- and system-level attackers (e.g., malware, rootkits) and network attackers
 * writing, publishing, and presenting research papers at international security conferences, and supporting the transfer of research results into a patent request
 
@@ -85,6 +85,7 @@ As part of my research, I have gained experience in several technical and non-te
   * application areas: traffic-to-app attribution, per-application firewall policies, isolated network firewalls, virtual machine introspection (forensics), FIDO2 web authentication
   * use of trusted execution environments (TEEs) / confidential computing technologies:  
   Intel SGX, Arm TrustZone, AMD SEV (SEV-SNP), OP-TEE OS, Graphene-SGX (now: Gramine)
+  * combining TEE-based remote attestation protocols with network (TLS, DTLS) and web protocols (WebAuthn)
   * Linux kernel, virtualization / hypervisor (esp. QEMU KVM), and (NIC) device driver extensions
   * extending user/kernel network services (e.g., TCP/IP stacks, firewalls, NIC interfaces, VPN-like services)
   * interaction with electronic IDs (e.g., ICAO-compliant ePassports with PACE, PA, and EAC)

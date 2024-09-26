@@ -4,7 +4,7 @@ excerpt: "<img src='/images/papers/seng/setting.jpg' width='500'><br/><br/>Gatew
 To distinguish between benign and malicious sender applications, firewalls rely on heuristics (e.g., port information) or client-side identifiers (e.g., the process ID).
 However, these traffic attribution methods are unreliable and can be easily bypassed by attackers.
 Therefore, we propose SENG, a gateway-located service that cooperates with client-side runtimes to enable secure traffic-to-app attribution.
-The SENG runtimes protect trusted applications and share hardware-based app identifiers with the SENG service to expose them to the firewall.
+The SENG runtimes protect client applications in trusted execution environments (TEEs) and share hardware-attested app identifiers with the SENG service to expose them to the firewall.
 That way, SENG enables gateway firewalls to securely attribute traffic to trusted applications and enforce app-grained firewall policies, even if the client systems have been compromised."
 collection: portfolio
 date: 2020-08-12

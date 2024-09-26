@@ -58,6 +58,7 @@ date: 2022-10-16
     To guarantee traffic protection and policy enforcement, TruGW grants the trusted domain exclusive access to the physical network cards (NICs) and provides secure NIC drivers.
     That way, all network traffic must pass through TruGW's trusted services.
     In addition, TruGW exposes a virtual NIC (VNIC) to the untrusted domain that provides the untrusted auxiliary services and OS with restricted network access, enabling remote admins full control on what traffic reaches them and what communication is permitted by them.
+    By using secure boot (trusted board boot), the router platform can verify the integrity of TruGW's bootloader and TEE code base.
     In conclusion, TruGW significantly decreases the attack surface of gateway routers and guarantees secure policy enforcement, even if the gateway's OS or auxiliary services become compromised.
 </p>
 

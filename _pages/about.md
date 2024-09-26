@@ -16,9 +16,9 @@ redirect_from:
 </head>
 
 I am a cyber security expert and researcher with a focus on hardware-assisted system and network security designs.
-In particular, the focus during my PhD has been on the design and implementation of attack prevention, detection, and attribution solutions based on different forms of hardware-based trusted execution environments (TEEs).
-In fact, I have practical experience on designing, implementing, and evaluating solutions based on Intel SGX, Arm TrustZone, and AMD SEV-SNP for per-application firewall policies, isolated network gateway routers, and secure FIDO2 web authentication based on electronic IDs.
-Most recently, my focus has extended to virtual machine introspection for TEE VMs (also: TVMs, or confidential VMs), as well as the design of security extensions for RISC-V CPUs.
+In particular, the focus during my PhD has been on the design and implementation of attack prevention, detection, and attribution solutions based on different forms of hardware-based trusted execution environments (TEEs) and their remote attestation protocols.
+In fact, I have practical experience in designing, implementing, and evaluating solutions based on Intel SGX, Arm TrustZone, and AMD SEV-SNP for per-application firewall policies, isolated network gateway routers, and secure FIDO2 web authentication based on electronic IDs.
+Most recently, my focus has extended to virtual machine introspection for TEE VMs (also: TVMs, or confidential VMs), as well as the design of HW-SW interfaces for security extensions of RISC-V CPUs.
 
 
 **I am at the job market now** and openly looking for cyber security research or architect positions in the area of system and network security, especially with focus on confidential computing or trusted computing technologies.
