@@ -45,6 +45,12 @@
             <p>Not yet published</p>
           {% elsif post.category == 'master' or post.category == 'bachelor' %}
             <p>Submitted in {{ post.date | default: "1900-01-01" | date: "%Y" }}</p>
+          {% elsif post.category == 'techreports' %}
+            <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }}
+            {% if post.talk == 'y' %}
+            <br/>Fabian Schwarz has given a talk on this publication at the venue
+            {% endif %}
+            </p>
           {% else %}
             <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} <i>(accept rate: {{ post.accept-rate }})</i>
             {% if post.talk == 'y' %}
