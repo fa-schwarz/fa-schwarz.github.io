@@ -7,14 +7,6 @@ redirect_from:
   - /resume
 ---
 
-<head>
-  <style>
-      p {
-          text-align: justify;
-      }
-  </style>
-</head>
-
 {% include base_path %}
 
 _note: PDF versions of my CV are in progress (in EN/GER)_

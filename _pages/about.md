@@ -7,14 +7,6 @@ redirect_from:
   - /about.html
 ---
 
-<head>
-  <style>
-      p {
-          text-align: justify;
-      }
-  </style>
-</head>
-
 I am a cyber security expert and researcher with a focus on hardware-assisted system and network security designs.
 In particular, the focus during my PhD has been on the design and implementation of attack prevention, detection, and attribution solutions based on different forms of hardware-based trusted execution environments (TEEs) and their remote attestation protocols.
 In fact, I have practical experience in designing, implementing, and evaluating solutions based on Intel SGX, Arm TrustZone, and AMD SEV-SNP for per-application firewall policies, isolated network gateway routers, and secure FIDO2 web authentication based on electronic IDs.
