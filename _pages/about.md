@@ -14,7 +14,7 @@ Most recently, my focus has extended to virtual machine introspection for TEE VM
 
 
 **I am at the job market now** and openly looking for cyber security research or architect positions in the area of system and network security, especially with focus on confidential computing or trusted computing technologies.
-In addition, I'm currently completing the final (formal) requirements of my PhD certification and the publication of one pending research project.
+In addition, I'm currently finishing the publication process of one extra research project (in revision stage at a conference).
 
 
 I have finished my PhD defense on 28th August 2024 at Saarland University and the [CISPA Helmholtz Center for Information Security](https://cispa.de/en) with my dissertation on "TEE-based Designs for Network Gateways, Web Authentication, and VM Introspection".
