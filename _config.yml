@@ -21,8 +21,8 @@ repository               : "fa-schwarz/fa-schwarz.github.io"
 author:
   # Biographic information
   avatar           : "pictures/profile.jpg"
-  name             : "Fabian F. Schwarz"
-  bio              : "Cybersecurity expert and researcher with focus on TEE-based system and network security architectures"
+  name             : "Fabian Schwarz"
+  bio              : "Dr.-Ing., Cybersecurity researcher with focus on TEE-based system and network security architectures"
   location         : "Germany"
   employer         : "CISPA (end: 08/24)"
   uri              : # URL

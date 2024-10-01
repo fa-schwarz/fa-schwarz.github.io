@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "About"
+title: "Dr.-Ing. Fabian Schwarz"
 author_profile: true
 redirect_from: 
   - /about/
