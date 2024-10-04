@@ -98,7 +98,7 @@ I am fluent in German (native language) and English.
 ## Publications
 
 During my PhD I have published and presented several papers on international research conferences.
-One additional publication on a RISC-V CPU extension is currently pending (under revision).
+One additional [paper on a RISC-V CPU extension](https://fa-schwarz.github.io/publication/keyvisor) is currently pending (under revision).
 
   <ul>{% for post in site.publications reversed %}
     {% if post.category != 'unpublished' and post.category != 'bachelor' and post.category != 'master' %}
