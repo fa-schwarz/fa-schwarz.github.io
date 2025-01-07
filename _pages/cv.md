@@ -22,6 +22,10 @@ _note: PDF versions of my CV are in progress (in EN/GER)_
 
 ## Work experience
 
+* **Networking Security Research Architect** (_full-time position_), 01/2025
+  * _NVIDIA_
+  * Germany, remote
+
 * **Research Assistant** (_full-time position, PhD Student_), 11/2017 -- 08/2024
   * _CISPA Helmholtz Center for Information Security & Saarland University_
   * Supervisor: Prof. Dr. Christian Rossow
