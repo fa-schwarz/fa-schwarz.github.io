@@ -9,7 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-_note: PDF versions of my CV are in progress (in EN/GER)_
 
 ## Education
 
