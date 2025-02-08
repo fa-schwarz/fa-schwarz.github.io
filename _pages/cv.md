@@ -123,6 +123,7 @@ I have served as a voluntary helper at international academic conferences, works
 
 ### Program Committee Member
 
+* [RAID conference 2025](https://raid2025.github.io/)
 * [RAID conference 2024](https://raid2024.github.io/) (+ award subcommittee)
 * [AISCC workshop 2024](https://www.ndss-symposium.org/ndss2024/co-located-events/aiscc/) (co-located with NDSS conference)
 * [RAID conference 2023](https://raid2023.org) (award: &quot;[noteworthy reviewer](https://x.com/chrossow/status/1715037102973309026)&quot;)
